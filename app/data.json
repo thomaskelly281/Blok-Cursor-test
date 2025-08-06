@@ -1,0 +1,93 @@
+[
+    {
+      "name": "Ut natoque augue",
+      "content_type": "Content type 1",
+      "updated_by": "Juanita Bergnaum",
+      "updated_on": "Apr 3, 2023, 4:02 PM",
+      "published_by": "Juanita Bergnaum",
+      "published_on": "Jul 23, 2023, 6:05 PM",
+      "status": "PUBLISHED"
+    },
+    {
+      "name": "Amet leo risus",
+      "content_type": "Content type 2",
+      "updated_by": "Garry Johnson",
+      "updated_on": "Dec 17, 2022, 11:05 PM",
+      "published_by": "Garry Johnson",
+      "published_on": "Sep 17, 2022, 2:35 PM",
+      "status": "CHANGED"
+    },
+    {
+      "name": "Velit ullamcorper tristique",
+      "content_type": "Content type 3",
+      "updated_by": "Derek White",
+      "updated_on": "Jul 5, 2022, 2:12 AM",
+      "published_by": "Derek White",
+      "published_on": "Apr 17, 2023, 1:54 PM",
+      "status": "CHANGED"
+    },
+    {
+      "name": "Nulla non id",
+      "content_type": "Content type 4",
+      "updated_by": "Rick Dooley",
+      "updated_on": "Jul 19, 2023, 10:02 PM",
+      "published_by": "Rick Dooley",
+      "published_on": "Dec 17, 2022, 11:05 PM",
+      "status": "DRAFT"
+    },
+    {
+      "name": "Risus vel risus",
+      "content_type": "Content type 5",
+      "updated_by": "Jill Wolf",
+      "updated_on": "Oct 30, 2022, 10:10 AM",
+      "published_by": "Jill Wolf",
+      "published_on": "Oct 6, 2022, 2:14 AM",
+      "status": "PUBLISHED"
+    },
+    {
+      "name": "Amet sagittis porttitor",
+      "content_type": "Content type 6",
+      "updated_by": "Lawrence Miller",
+      "updated_on": "Aug 1, 2023, 9:45 PM",
+      "published_by": "Lawrence Miller",
+      "published_on": "Oct 30, 2022, 10:10 AM",
+      "status": "DRAFT"
+    },
+    {
+      "name": "Suscipit arcu purus",
+      "content_type": "Content type 7",
+      "updated_by": "Joy Rath",
+      "updated_on": "Apr 17, 2023, 1:54 PM",
+      "published_by": "Joy Rath",
+      "published_on": "Jul 15, 2023, 9:17 PM",
+      "status": "DRAFT"
+    },
+    {
+      "name": "Vestibulum rhoncus ac",
+      "content_type": "Content type 8",
+      "updated_by": "Benny O'Conner",
+      "updated_on": "Jul 8, 2022, 7:46 PM",
+      "published_by": "Benny O'Conner",
+      "published_on": "Mar 23, 2023, 8:10 AM",
+      "status": "PUBLISHED"
+    },
+    {
+      "name": "Sem odio vulputate",
+      "content_type": "Content type 9",
+      "updated_by": "Myra Dietrich",
+      "updated_on": "Jul 15, 2023, 9:17 PM",
+      "published_by": "Myra Dietrich",
+      "published_on": "Jul 24, 2022, 4:32 AM",
+      "status": "PUBLISHED"
+    },
+    {
+      "name": "Sit ac ultrices",
+      "content_type": "Content type 10",
+      "updated_by": "Fannie Kunze",
+      "updated_on": "Mar 9, 2023, 5:38 AM",
+      "published_by": "Fannie Kunze",
+      "published_on": "Jul 8, 2022, 7:46 PM",
+      "status": "DRAFT"
+    }
+  ]
+  
