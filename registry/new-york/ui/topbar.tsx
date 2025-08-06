@@ -37,7 +37,7 @@ interface TopBarProps {
 
 export function TopBar({ 
   className,
-  logoImageSrc = "https://delivery-sitecore.sitecorecontenthub.cloud/api/public/content/logo-sitecore",
+  logoImageSrc = "https://delivery-sitecore.sitecorecontenthub.cloud/api/public/content/logo-content_hub",
   logoAlt = "Logo",
   customLogo,
   actionButtons,
