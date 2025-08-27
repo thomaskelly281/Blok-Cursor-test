@@ -27,18 +27,21 @@ interface TopBarProps {
   className?: string
   logoImageSrc?: string
   logoAlt?: string
+  logoHref?: string
   customLogo?: React.ReactNode
   navigationItems?: NavigationItem[]
   showHelpButton?: boolean
   showAvatar?: boolean
+  showDotMenu?: boolean
   avatarFallback?: string
   actionButtons?: React.ReactNode
 }
 
 export function TopBar({ 
   className,
-  logoImageSrc = "https://delivery-sitecore.sitecorecontenthub.cloud/api/public/content/logo-sitecore",
+  logoImageSrc = "https://delivery-sitecore.sitecorecontenthub.cloud/api/public/content/logo-content_hub",
   logoAlt = "Logo",
+  logoHref = "#",
   customLogo,
   actionButtons,
   navigationItems = [
@@ -57,26 +60,31 @@ export function TopBar({
   ],
   showHelpButton = true,
   showAvatar = true,
+  showDotMenu = true,
   avatarFallback = "JD"
 }: TopBarProps) {
   return (
     <header className={`shadow-base bg-white z-10 ${className}`}>
       <div className="flex h-16 items-center px-4">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" colorScheme="neutral">
-            <Icon path={mdiDotsGrid} size={1} />
-          </Button>
+          {showDotMenu && (
+            <Button variant="ghost" size="icon" colorScheme="neutral">
+              <Icon path={mdiDotsGrid} size={1} />
+            </Button>
+          )}
           <div className="flex items-center gap-1">
             {customLogo ? (
               customLogo
             ) : (
-              <span className="text-xl font-bold text-red-500">
-                <img
-                  alt={logoAlt}
-                  className="rounded-md object-cover object-left p-1"
-                  src={logoImageSrc}
-                />
-              </span>
+              <Link href={logoHref}>
+                <span className="text-xl font-bold text-red-500">
+                  <img
+                    alt={logoAlt}
+                    className="rounded-md object-cover object-left p-1"
+                    src={logoImageSrc}
+                  />
+                </span>
+              </Link>
             )}
           </div>
         </div>
