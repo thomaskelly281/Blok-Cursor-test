@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Snippet Embed</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .snippet-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .snippet-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .code-example {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .note {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Sitecore Snippet Manager - Embed Test</h1>
+        
+        <p>This page demonstrates how snippets from the Sitecore Snippet Manager can be embedded into external websites.</p>
+        
+        <div class="note">
+            <strong>Note:</strong> This is a test page. In a real implementation, you would replace the snippet IDs with actual IDs from your snippet manager.
+        </div>
+
+        <h2>Example 1: JavaScript Embed</h2>
+        <p>This snippet is loaded dynamically using JavaScript:</p>
+        
+        <div class="snippet-container">
+            <div class="snippet-label">Snippet will appear here</div>
+            <div id="sitecore-snippet-1"></div>
+        </div>
+        
+        <div class="code-example">
+&lt;!-- Add this to your HTML head or before closing body tag --&gt;
+&lt;script src="http://localhost:3000/api/snippets/1/embed.js"&gt;&lt;/script&gt;
+
+&lt;!-- Add this where you want the snippet to appear --&gt;
+&lt;div id="sitecore-snippet-1"&gt;&lt;/div&gt;
+        </div>
+
+        <h2>Example 2: Iframe Embed</h2>
+        <p>This snippet is embedded using an iframe:</p>
+        
+        <div class="snippet-container">
+            <div class="snippet-label">Iframe snippet</div>
+            <iframe src="http://localhost:3000/api/snippets/2/embed" width="100%" height="auto" frameborder="0" style="border: none; min-height: 100px;"></iframe>
+        </div>
+        
+        <div class="code-example">
+&lt;iframe src="http://localhost:3000/api/snippets/2/embed" width="100%" height="auto" frameborder="0"&gt;&lt;/iframe&gt;
+        </div>
+
+        <h2>Example 3: Targeted Placement</h2>
+        <p>This snippet is placed in a specific location using data attributes:</p>
+        
+        <div class="snippet-container">
+            <div class="snippet-label">Targeted snippet</div>
+            <div data-sitecore-snippet="3"></div>
+        </div>
+        
+        <div class="code-example">
+&lt;!-- Add the script tag --&gt;
+&lt;script src="http://localhost:3000/api/snippets/3/embed.js"&gt;&lt;/script&gt;
+
+&lt;!-- Add this where you want the snippet to appear --&gt;
+&lt;div data-sitecore-snippet="3"&gt;&lt;/div&gt;
+        </div>
+
+        <h2>Event Handling</h2>
+        <p>You can listen for snippet load events to customize behavior:</p>
+        
+        <div class="code-example">
+document.addEventListener('sitecore-snippet-loaded', (event) => {
+    console.log('Snippet loaded:', event.detail);
+    // Custom logic here
+});
+        </div>
+
+        <div class="note">
+            <strong>Important:</strong> Make sure your snippet manager is running on localhost:3000 for these examples to work. 
+            In production, replace the URLs with your actual snippet manager domain.
+        </div>
+
+        <h2>Benefits of This Approach</h2>
+        <ul>
+            <li><strong>No CMS Required:</strong> Update content without touching your main website</li>
+            <li><strong>Real-time Updates:</strong> Changes appear immediately across all sites</li>
+            <li><strong>Easy Integration:</strong> Just add a few lines of code</li>
+            <li><strong>Version Control:</strong> Track changes and rollback if needed</li>
+            <li><strong>Performance:</strong> Lightweight and fast loading</li>
+        </ul>
+    </div>
+
+    <!-- Load snippets dynamically -->
+    <script>
+        // Load the first snippet
+        const script1 = document.createElement('script');
+        script1.src = 'http://localhost:3000/api/snippets/1/embed.js';
+        document.head.appendChild(script1);
+
+        // Load the third snippet
+        const script3 = document.createElement('script');
+        script3.src = 'http://localhost:3000/api/snippets/3/embed.js';
+        document.head.appendChild(script3);
+
+        // Listen for snippet load events
+        document.addEventListener('sitecore-snippet-loaded', (event) => {
+            console.log('Snippet loaded:', event.detail);
+        });
+    </script>
+</body>
+</html> 

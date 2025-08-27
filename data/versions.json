@@ -1,0 +1,33 @@
+[
+  {
+    "snippetId": "2",
+    "versions": [
+      {
+        "version": 1,
+        "content": "<div class='bg-gray-100 p-3 rounded text-sm text-gray-700'><p>🔒 We use cookies to enhance your experience.</p></div>",
+        "createdAt": "2024-01-10T09:00:00Z",
+        "createdBy": "legal@company.com",
+        "changeNotes": "Initial version"
+      },
+      {
+        "version": 2,
+        "content": "<div class='bg-gray-100 p-3 rounded text-sm text-gray-700'><p>🔒 We use cookies to enhance your experience. By continuing to use this site, you agree to our <a href='/privacy' class='text-blue-600 underline'>Privacy Policy</a>.</p></div>",
+        "createdAt": "2024-01-12T14:30:00Z",
+        "createdBy": "legal@company.com",
+        "changeNotes": "Added privacy policy link"
+      }
+    ]
+  },
+  {
+    "snippetId": "1756303195282",
+    "versions": [
+      {
+        "version": 1,
+        "content": "Hola",
+        "createdAt": "2025-08-27T13:59:55.283Z",
+        "createdBy": "marketing@company.com",
+        "changeNotes": "Initial version"
+      }
+    ]
+  }
+]

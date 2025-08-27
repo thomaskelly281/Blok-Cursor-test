@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "title": "Seasonal CTA",
+    "content": "<div class='bg-blue-500 text-white p-4 rounded-lg text-center'><h3 class='text-lg font-bold mb-2'>🎄 Holiday Sale!</h3><p class='mb-3'>Get 20% off all products this season</p><button class='bg-white text-blue-500 px-6 py-2 rounded font-semibold hover:bg-gray-100'>Shop Now</button></div>",
+    "type": "cta",
+    "tags": [
+      "holiday",
+      "sale",
+      "cta"
+    ],
+    "version": 1,
+    "createdAt": "2024-01-15T10:00:00Z",
+    "updatedAt": "2024-01-15T10:00:00Z",
+    "createdBy": "marketing@company.com",
+    "status": "active"
+  },
+  {
+    "id": "2",
+    "title": "Privacy Notice",
+    "content": "<div class='bg-gray-100 p-3 rounded text-sm text-gray-700'><p>🔒 We use cookies to enhance your experience. By continuing to use this site, you agree to our <a href='/privacy' class='text-blue-600 underline'>Privacy Policy</a>.</p></div>",
+    "type": "notice",
+    "tags": [
+      "privacy",
+      "legal",
+      "cookies"
+    ],
+    "version": 2,
+    "createdAt": "2024-01-10T09:00:00Z",
+    "updatedAt": "2024-01-12T14:30:00Z",
+    "createdBy": "legal@company.com",
+    "status": "active"
+  },
+  {
+    "id": "3",
+    "title": "Maintenance Banner",
+    "content": "<div class='bg-yellow-500 text-yellow-900 p-3 rounded text-center'><p class='font-medium'>⚠️ Scheduled maintenance on Jan 20th, 2-4 AM EST. Service may be temporarily unavailable.</p></div>",
+    "type": "banner",
+    "tags": [
+      "maintenance",
+      "alert",
+      "scheduled"
+    ],
+    "version": 1,
+    "createdAt": "2024-01-18T08:00:00Z",
+    "updatedAt": "2024-01-18T08:00:00Z",
+    "createdBy": "devops@company.com",
+    "status": "active"
+  },
+  {
+    "id": "4",
+    "title": "Newsletter Signup",
+    "content": "<div class='bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-lg text-center'><h3 class='text-xl font-bold mb-2'>Stay Updated!</h3><p class='mb-4'>Get the latest insights delivered to your inbox</p><div class='flex gap-2 max-w-sm mx-auto'><input type='email' placeholder='Enter your email' class='flex-1 px-3 py-2 rounded text-gray-900' /><button class='bg-white text-purple-600 px-4 py-2 rounded font-semibold hover:bg-gray-100'>Subscribe</button></div></div>",
+    "type": "form",
+    "tags": [
+      "newsletter",
+      "signup",
+      "marketing"
+    ],
+    "version": 1,
+    "createdAt": "2024-01-05T11:00:00Z",
+    "updatedAt": "2024-01-05T11:00:00Z",
+    "createdBy": "marketing@company.com",
+    "status": "active"
+  }
+]

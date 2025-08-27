@@ -1,0 +1,26 @@
+[
+  {
+    "email": "marketing@company.com",
+    "name": "Marketing Team",
+    "role": "editor",
+    "permissions": ["view", "edit", "create", "delete"]
+  },
+  {
+    "email": "legal@company.com",
+    "name": "Legal Team",
+    "role": "editor",
+    "permissions": ["view", "edit", "create"]
+  },
+  {
+    "email": "devops@company.com",
+    "name": "DevOps Team",
+    "role": "editor",
+    "permissions": ["view", "edit", "create"]
+  },
+  {
+    "email": "viewer@company.com",
+    "name": "Viewer User",
+    "role": "viewer",
+    "permissions": ["view"]
+  }
+] 
