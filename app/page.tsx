@@ -1,10 +1,47 @@
+"use client"
+
 import { TopBar } from "@/registry/new-york/ui/topbar"
 import { Button } from "@/registry/new-york/ui/button"
 import { Input } from "@/registry/new-york/ui/input"
 import { Card, CardContent } from "@/registry/new-york/ui/card"
 import { Badge } from "@/registry/new-york/ui/badge"
+import { Textarea } from "@/registry/new-york/ui/textarea"
+import { useState } from "react"
 
 export default function Page() {
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      author: "Administrator",
+      content: "@Thomas Edward Kelly Testing",
+      timestamp: "less than a minute ago",
+      avatar: "bg-gray-300"
+    }
+  ])
+  
+  const [newComment, setNewComment] = useState("")
+  const [isAddingComment, setIsAddingComment] = useState(false)
+
+  const handleAddComment = () => {
+    if (newComment.trim()) {
+      const comment = {
+        id: Date.now(),
+        author: "You",
+        content: newComment,
+        timestamp: "just now",
+        avatar: "bg-blue-500"
+      }
+      setComments([comment, ...comments])
+      setNewComment("")
+      setIsAddingComment(false)
+    }
+  }
+
+  const handleCancelComment = () => {
+    setNewComment("")
+    setIsAddingComment(false)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top Navigation Bar */}
@@ -188,6 +225,47 @@ export default function Page() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
+
+          {/* Add Comment Section */}
+          <div className="mb-6">
+            {!isAddingComment ? (
+              <Button 
+                onClick={() => setIsAddingComment(true)}
+                className="w-full justify-start text-gray-600 hover:text-gray-900"
+                variant="outline"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Add a comment...
+              </Button>
+            ) : (
+              <Card className="p-4">
+                <Textarea
+                  placeholder="Write your comment..."
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  className="mb-3 min-h-[80px] resize-none"
+                />
+                <div className="flex items-center justify-end space-x-2">
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={handleCancelComment}
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    size="sm"
+                    onClick={handleAddComment}
+                    disabled={!newComment.trim()}
+                  >
+                    Comment
+                  </Button>
+                </div>
+              </Card>
+            )}
+          </div>
           
           {/* Sort Options */}
           <div className="flex items-center justify-between mb-4">
@@ -206,25 +284,27 @@ export default function Page() {
           
           {/* Comments List */}
           <div className="space-y-4">
-            <Card className="px-2">
-              <CardContent className="p-0">
-                <div className="flex items-start space-x-3">
-                  <div className=" bg-gray-300 rounded-full flex-shrink-0"></div>
-                  <div className="flex-1 min-w-0 px-0">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm font-medium text-gray-900">Administrator</p>
-                      <Button variant="ghost" size="icon">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                        </svg>
-                      </Button>
+            {comments.map((comment) => (
+              <Card key={comment.id} className="px-2">
+                <CardContent className="p-0">
+                  <div className="flex items-start space-x-3">
+                    <div className={`w-8 h-8 ${comment.avatar} rounded-full flex-shrink-0`}></div>
+                    <div className="flex-1 min-w-0 px-0">
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-medium text-gray-900">{comment.author}</p>
+                        <Button variant="ghost" size="icon">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                          </svg>
+                        </Button>
+                      </div>
+                      <p className="text-xs text-gray-500 mb-2">{comment.timestamp}</p>
+                      <p className="text-sm text-gray-900">{comment.content}</p>
                     </div>
-                    <p className="text-xs text-gray-500 mb-2">less than a minute ago</p>
-                    <p className="text-sm text-purple-600">@Thomas Edward Kelly <span className="text-gray-900">Testing</span></p>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
           
         </div>
