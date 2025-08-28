@@ -1,21 +1,5 @@
 [
   {
-    "id": "1",
-    "title": "Seasonal CTA",
-    "content": "<div class='bg-blue-500 text-white p-4 rounded-lg text-center'><h3 class='text-lg font-bold mb-2'>🎄 Holiday Sale!</h3><p class='mb-3'>Get 20% off all products this season</p><button class='bg-white text-blue-500 px-6 py-2 rounded font-semibold hover:bg-gray-100'>Shop Now</button></div>",
-    "type": "cta",
-    "tags": [
-      "holiday",
-      "sale",
-      "cta"
-    ],
-    "version": 1,
-    "createdAt": "2024-01-15T10:00:00Z",
-    "updatedAt": "2024-01-15T10:00:00Z",
-    "createdBy": "marketing@company.com",
-    "status": "active"
-  },
-  {
     "id": "2",
     "title": "Privacy Notice",
     "content": "<div class='bg-gray-100 p-3 rounded text-sm text-gray-700'><p>🔒 We use cookies to enhance your experience. By continuing to use this site, you agree to our <a href='/privacy' class='text-blue-600 underline'>Privacy Policy</a>.</p></div>",
