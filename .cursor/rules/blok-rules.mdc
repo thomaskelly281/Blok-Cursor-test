@@ -1,0 +1,403 @@
+---
+alwaysApply: true
+---
+# Blok AI Rules
+
+These rules define how AI assistants should generate and edit code in the **Blok Design System**. They ensure consistency, maintainability, and alignment with the system’s architecture and design guidelines.
+
+---
+
+## Style and Voice
+
+- Prefer short, simple, direct text. Avoid fluff, filler, or repetition.
+- Avoid chatty or overly casual tone; balance between friendly and formal.
+- Each text element (button, heading, caption) should be self-contained.
+- Use common, plain words; avoid slang, jargon, or invented terms.
+- Maintain consistent vocabulary across the UI.
+
+---
+
+## Grammar and Spelling
+
+- Use **American English** spelling and word forms (per Merriam-Webster).
+- Always prefer clear labels over vague confirmations:
+  - ✅ "Delete item?"
+  - ❌ "Are you sure?"
+- Avoid one-word confirmations like "Yes/No." Be explicit: "Delete / Cancel."
+
+---
+
+## Capitalization
+
+- Use **sentence case** for all UI text (only first word capitalized).
+- Preserve capitalization of abbreviations, proper names, and nouns.
+- Do not hardcode ALL CAPS text—use CSS for stylistic uppercase.
+
+---
+
+## Punctuation
+
+- Do not use periods on single-sentence UI elements (e.g., buttons, toasts).
+- Do use periods when:
+  - Multiple sentences are used.
+  - In body text.
+  - When a sentence is followed by a link.
+- Do not use parentheses for plurals. Use the plural form directly.
+- Avoid exclamation marks (unless needed to avoid sounding sarcastic).
+- Never use more than one exclamation mark.
+
+---
+
+## Numbers
+
+- Use numerals instead of words (e.g., "3 messages," not "three messages").
+- Exception: when mixing words and numbers ("Enter two 3s").
+
+---
+
+## Truncation
+
+- If text is truncated, end with an ellipsis.
+- Always provide the full text in a tooltip or accessible label.
+
+---
+
+## Tense
+
+- Write in **present tense** for product behavior.
+- Use simple forms for past/future if required.
+
+---
+
+## Units of Measure
+
+- Place a space between value and unit (e.g., `123 MB`, `500 pixels`).
+- Exception: skip the space if unit is one character (`1080p`, `5d`).
+
+---
+
+## Component and Registry Rules
+
+- Do not change or edit registry components. Create a new component outside of the registry that builds on top of the registry component.
+- Use and build off of registry components as much as possible before importing anything new.
+- Use registry component classes to make changes, as we have overwritten ShadCN.
+- Use **mdi icons** wherever there is an icon in the application.
+- For text, always use sentence case.
+- Alert Dialog should always use **destructive** or **primary** as the default button color scheme.
+
+---
+
+## Page Layout Rules
+
+- Pages should always accommodate for a **topbar** as the first item, full width.
+- Below the topbar, allow space for an **alert**.
+- The main content of the page follows after alerts.
+- Pages should always accommodate **dialog** and **alert-dialog** boxes going over the content.
+
+---
+
+## Styling Rules
+
+- Do not use arbitrary Tailwind values for color, border radius, shadows, etc. Use **design tokens**.
+- Top bars, side panels, navigation bars, action bars, and items that need to be above the background for a hierarchical reason should have a **drop shadow of md**.
+- Page contents (e.g., cards as containers) should have **no shadow or stroke**, and use their **flat variant**.
+
+---
+
+## Buttons
+
+- There should never be more than **two primary buttons** in a container.
+
+---
+
+# Cursor Rules for Shadcn-Based Design System
+
+## Architecture Overview
+
+This project uses a sophisticated Shadcn-based design system with a registry pattern that separates core UI components from application-specific implementations. The system consists of:
+
+1. **Registry**: Core UI components in `registry/new-york/ui/`
+2. **Bloks**: Pre-built page layouts and complex components in `registry/new-york/bloks/`
+3. **Tokens**: Design tokens for colors, typography, spacing, etc.
+4. **Application Components**: Custom implementations built upon the registry
+
+---
+
+## Core Principles
+
+### 1. Registry-First Development
+
+- **ALWAYS** import UI components from `@/registry/new-york/ui/` for core functionality
+- **NEVER modify registry components directly** - they are the stable foundation
+- Use the registry as the single source of truth for all UI primitives
+- **When modifications are needed, create duplicates in the components directory**
+
+### 2. Component Composition Pattern
+
+- Build complex components by composing registry components
+- Create application-specific components in `components/` directory
+- Use the registry components as building blocks, not as final implementations
+- **Compose when possible, duplicate when necessary**
+
+### 3. Token-Based Styling
+
+- Use semantic color tokens (e.g., `text-primary`, `bg-muted`) instead of hardcoded colors
+- Leverage the design system's color palette defined in `app/colors.css`
+- Follow the established color scheme patterns (primary, success, danger, neutral, ai)
+
+---
+
+## Import Patterns
+
+### ✅ Correct Import Pattern
+
+```tsx
+import { Button } from "@/registry/new-york/ui/button"
+import { Card, CardContent } from "@/registry/new-york/ui/card"
+import { Table, TableBody, TableCell } from "@/registry/new-york/ui/table"
+
+import { ButtonDemo } from "@/components/button-demo"
+```
+
+### ❌ Incorrect Import Pattern
+
+```tsx
+import { Button } from "@/lib/utils"   // Don't
+import { Button } from "@/components/button" // Don't create duplicate button components
+```
+
+---
+
+## Component Implementation Guidelines
+
+### 1. Registry Components
+
+- Minimal, focused on a single responsibility
+- Use `class-variance-authority` (cva) for variant management
+- Include proper TypeScript types and variants
+- Follow `buttonVariants` patterns with variants, sizes, and colorSchemes
+- **NEVER modify registry components directly**
+
+### 2. Application Components
+
+- Build upon registry components, don't replace them
+- Use composition to create complex layouts
+- Leverage tokens for spacing, typography, and color
+- Follow established demo component patterns
+- **Duplicate in **``** if modifications are required**
+
+### 3. Blok Components
+
+- Pre-built page layouts that can be customized
+- Use as starting points for new pages
+- Customize with props/content
+- **Don't modify originals; create new implementations**
+
+---
+
+## Component Modification Patterns
+
+### 1. When to Duplicate vs. Compose
+
+```tsx
+// ✅ Compose
+<div className="flex gap-4">
+  <Button>Primary Action</Button>
+  <Button variant="outline">Secondary Action</Button>
+</div>
+
+// ✅ Duplicate
+// components/custom-button.tsx
+import { Button } from "@/registry/new-york/ui/button"
+import { buttonVariants } from "@/registry/new-york/ui/button"
+
+export function CustomButton({ className, ...props }) {
+  return (
+    <Button className={cn(buttonVariants(), "custom-styles", className)} {...props} />
+  )
+}
+
+// ❌ Don't modify registry/new-york/ui/button.tsx
+```
+
+### 2. Naming Conventions for Duplicates
+
+```
+components/
+├── button-demo.tsx
+├── custom-button.tsx
+├── extended-button.tsx
+└── button-with-icon.tsx
+```
+
+### 3. Import Patterns for Modified Components
+
+```tsx
+import { CustomButton } from "@/components/custom-button"
+import { ExtendedButton } from "@/components/extended-button"
+
+import { Button } from "@/registry/new-york/ui/button"
+import { Card } from "@/registry/new-york/ui/card"
+```
+
+---
+
+## Styling Guidelines
+
+### 1. Color Usage
+
+```tsx
+// ✅ Tokens
+className="text-primary bg-muted border-border"
+
+// ✅ Color Schemes
+<Button colorScheme="success">Success</Button>
+<Button colorScheme="danger">Danger</Button>
+<Button colorScheme="ai">AI</Button>
+
+// ❌ Hardcoded colors
+className="text-blue-500 bg-gray-100"
+```
+
+### 2. Spacing and Layout
+
+```tsx
+className="p-6 mx-6 mb-6 gap-3"
+className="flex flex-col gap-6"
+className="flex flex-wrap items-center gap-3"
+```
+
+### 3. Typography
+
+```tsx
+className="text-3xl font-bold mb-2"
+className="text-subtle-text"
+className="text-muted-foreground"
+```
+
+---
+
+## Component Variants and Props
+
+### 1. Button Variants
+
+```tsx
+<Button size="xs">XS</Button>
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+
+<Button size="icon-xs">Icon</Button>
+<Button size="icon-sm">Icon</Button>
+<Button size="icon">Icon</Button>
+<Button size="icon-lg">Icon</Button>
+
+<Button variant="default">Default</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+
+<Button colorScheme="primary">Primary</Button>
+<Button colorScheme="success">Success</Button>
+<Button colorScheme="danger">Danger</Button>
+<Button colorScheme="neutral">Neutral</Button>
+```
+
+### 2. Composition Example
+
+```tsx
+<div className="flex h-screen flex-col">
+  <TopBar />
+  <div className="flex flex-1 overflow-hidden">
+    <SidebarProvider>
+      <Sidebar />
+    </SidebarProvider>
+    <main className="flex-1 overflow-auto">
+      <Card>
+        <CardContent>
+          <Table>
+            {/* Table content */}
+          </Table>
+        </CardContent>
+      </Card>
+    </main>
+  </div>
+</div>
+```
+
+---
+
+## File Organization
+
+### 1. Registry Structure
+
+```
+registry/
+├── new-york/
+│   ├── ui/
+│   ├── bloks/
+│   ├── charts/
+│   └── hooks/
+├── registry-ui.ts
+├── registry-blocks.ts
+└── registry-colors.ts
+```
+
+### 2. Application Structure
+
+```
+components/
+app/
+├── blocks/
+├── foundation/
+└── globals.css
+```
+
+---
+
+## Best Practices
+
+- Start with registry components
+- Use TypeScript for all definitions
+- Follow naming conventions
+- Include accessibility attributes
+- Use Tailwind and token system consistently
+- Import only what you need
+- Use dynamic imports for large components
+- Apply React.memo when needed
+- Test with screen readers
+
+---
+
+## Troubleshooting
+
+- Check import paths against registry
+- Inspect applied classes in DevTools
+- Confirm Tailwind config is correct
+- Verify custom CSS variables exist
+- Check variant definitions/types
+
+---
+
+## Migration Guidelines
+
+- Map custom components to registry equivalents
+- Update styling to tokens
+- Test visual and functional consistency
+- Registry updates propagate safely
+
+---
+
+## Benefits of the Duplication Pattern
+
+- Registry remains stable
+- Updates don't break custom changes
+- Easy customization
+- Clear separation between core and custom
+
+---
+
+## Summary
+
+**Registry-First, Duplicate-When-Needed**: Registry is the foundation. Duplicate in `components/` if modification is required. This ensures consistency, flexibility, and stability of the design system.
+
